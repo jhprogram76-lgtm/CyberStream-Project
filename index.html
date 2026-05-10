@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CyberStream | Acceso SOC</title>
+    <style>
+        /* --- AQUÍ ESTÁ EL CSS (EL ESTILO) --- */
+        body {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1280');
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .login-box {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 50px;
+            border-radius: 8px;
+            width: 350px;
+            text-align: center;
+            border-top: 4px solid #E50914;
+        }
+        .logo { color: #E50914; font-size: 35px; margin-bottom: 20px; font-weight: bold; }
+        .logo span { color: white; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #333;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            box-sizing: border-box;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #E50914;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .error-msg { color: #E87C03; font-size: 13px; margin-top: 15px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <div class="logo">CYBER<span>STREAM</span></div>
+        <h2>Acceso Analista</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit" class="login-btn">Entrar al Sistema</button>
+            <p id="errorMessage" class="error-msg"></p>
+        </form>
+    </div>
+
+    <script>
+        /* --- AQUÍ ESTÁ EL JAVASCRIPT (LA LÓGICA) --- */
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            const errorDisplay = document.getElementById('errorMessage');
+
+            // Validación de seguridad
+            if (pass.length < 8) {
+                errorDisplay.innerText = "⚠️ Seguridad: Mínimo 8 caracteres.";
+                errorDisplay.style.display = 'block';
+                return;
+            }
+
+            if (email === "admin@cyberstream.com" && pass === "CyberAudit2024!") {
+                alert("Acceso concedido. Cargando Dashboard...");
+                // Aquí podrías redirigir a tu otro portafolio
+            } else {
+                errorDisplay.innerText = "❌ Credenciales no autorizadas.";
+                errorDisplay.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
